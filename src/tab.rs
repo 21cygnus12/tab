@@ -27,6 +27,13 @@ struct TimeSignature {
 }
 
 impl TimeSignature {
+    fn new(numerator: u8, denominator: u8) -> Self {
+        Self {
+            numerator,
+            denominator,
+        }
+    }
+
     fn ticks(&self) -> Tick {
         Tick(self.numerator as u32 * TPQN * 4 / self.denominator as u32)
     }
@@ -87,17 +94,11 @@ mod tests {
 
     #[test]
     fn time_signature_ticks() {
-        let ts = TimeSignature {
-            numerator: 4,
-            denominator: 4,
-        };
+        let ts = TimeSignature::new(4, 4);
 
         assert_eq!(ts.ticks().0, 1920);
 
-        let ts = TimeSignature {
-            numerator: 7,
-            denominator: 8,
-        };
+        let ts = TimeSignature::new(7, 8);
 
         assert_eq!(ts.ticks().0, 1680);
     }
