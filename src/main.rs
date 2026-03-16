@@ -1,5 +1,5 @@
 use guitab::tab::Tab;
-use iced::Element;
+use iced::{Element, Length, widget::canvas};
 
 fn main() -> iced::Result {
     iced::run(App::update, App::view)
@@ -15,7 +15,10 @@ impl App {
         match message {}
     }
     fn view(&self) -> Element<'_, Message> {
-        iced::widget::space().into()
+        canvas(&self.tab)
+            .width(Length::Fill)
+            .height(Length::Fill)
+            .into()
     }
 }
 
