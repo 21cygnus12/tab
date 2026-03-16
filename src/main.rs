@@ -1,3 +1,4 @@
+use guitab::tab::Tab;
 use iced::Element;
 
 fn main() -> iced::Result {
@@ -5,7 +6,9 @@ fn main() -> iced::Result {
 }
 
 #[derive(Default)]
-struct App {}
+struct App {
+    tab: Tab,
+}
 
 impl App {
     fn update(&mut self, message: Message) {
